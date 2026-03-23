@@ -1,0 +1,40 @@
+<suite name="simpleTestCases">
+
+    <listeners>
+        <listener class-name="org.example.utils.TestListener"/>
+    </listeners>
+
+
+    <test name="login test">
+        <classes>
+
+            <class name="org.example.login.LoginTest"/>
+
+        </classes>
+
+
+    </test>
+
+
+
+    <test name="product test">
+        <classes>
+
+            <class name="org.example.product.ProductTest"/>
+
+        </classes>
+
+
+   </test>
+    <test name="cart test">
+        <classes>
+
+            <class name="org.example.cart.CartTest"/>
+
+        </classes>
+
+
+    </test>
+
+
+</suite>
