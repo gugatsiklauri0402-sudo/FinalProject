@@ -1,4 +1,4 @@
-package org.example.utils;
+package ge.vintages8000.utils;
 
 // Utils — დამხმარე კლასი ლოგირებისათვის (Extent Report-ში)
 public class Utils {

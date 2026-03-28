@@ -1,12 +1,11 @@
-package org.example.product;
+package ge.vintages8000.product;
 
-import org.example.BaseTest;
-import org.testng.Assert;
+import ge.vintages8000.BaseTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.example.pages.FavoritesPage;
-import org.example.pages.LoginPage;
-import org.example.pages.ProductPage;
+import ge.vintages8000.pages.FavoritesPage;
+import ge.vintages8000.pages.LoginPage;
+import ge.vintages8000.pages.ProductPage;
 
 public class ProductTest extends BaseTest {
 

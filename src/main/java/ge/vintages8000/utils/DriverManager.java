@@ -1,4 +1,4 @@
-package org.example.utils;
+package ge.vintages8000.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

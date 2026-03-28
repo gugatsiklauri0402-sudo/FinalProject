@@ -1,11 +1,11 @@
-package org.example.cart;
+package ge.vintages8000.cart;
 
-import org.example.BaseTest;
-import org.example.BasePage;
-import org.example.pages.CartPage;
+import ge.vintages8000.BaseTest;
+import ge.vintages8000.BasePage;
+import ge.vintages8000.pages.CartPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.example.pages.ProductPage;
+import ge.vintages8000.pages.ProductPage;
 
 public class CartTest extends BaseTest {
 

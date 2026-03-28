@@ -1,4 +1,4 @@
-package org.example.utils;
+package ge.vintages8000.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

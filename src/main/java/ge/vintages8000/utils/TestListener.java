@@ -1,4 +1,4 @@
-package org.example.utils;
+package ge.vintages8000.utils;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;

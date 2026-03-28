@@ -1,6 +1,6 @@
-package org.example.pages;
+package ge.vintages8000.pages;
 
-import org.example.BasePage;
+import ge.vintages8000.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

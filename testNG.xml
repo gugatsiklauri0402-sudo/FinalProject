@@ -1,14 +1,14 @@
 <suite name="simpleTestCases">
 
     <listeners>
-        <listener class-name="org.example.utils.TestListener"/>
+        <listener class-name="ge.vintages8000.utils.TestListener"/>
     </listeners>
 
 
     <test name="login test">
         <classes>
 
-            <class name="org.example.login.LoginTest"/>
+            <class name="ge.vintages8000.login.LoginTest"/>
 
         </classes>
 
@@ -20,7 +20,7 @@
     <test name="product test">
         <classes>
 
-            <class name="org.example.product.ProductTest"/>
+            <class name="ge.vintages8000.product.ProductTest"/>
 
         </classes>
 
@@ -29,7 +29,7 @@
     <test name="cart test">
         <classes>
 
-            <class name="org.example.cart.CartTest"/>
+            <class name="ge.vintages8000.cart.CartTest"/>
 
         </classes>
 

@@ -1,12 +1,12 @@
-package org.example;
+package ge.vintages8000;
 
-import org.example.utils.Utils;
+import ge.vintages8000.utils.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.example.utils.ConfigReader;
+import ge.vintages8000.utils.ConfigReader;
 
 import java.time.Duration;
 

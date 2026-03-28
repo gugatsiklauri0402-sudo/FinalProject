@@ -1,10 +1,10 @@
-package org.example.login;
+package ge.vintages8000.login;
 
-import org.example.BaseTest;
+import ge.vintages8000.BaseTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.example.pages.LoginPage;
-import org.example.pages.ProductPage;
+import ge.vintages8000.pages.LoginPage;
+import ge.vintages8000.pages.ProductPage;
 
 
 public class LoginTest extends BaseTest {
@@ -35,7 +35,7 @@ public class LoginTest extends BaseTest {
     }
 
 
-    // ტესტი 2: ლოგაუთის (Sign Out) შემოწმება
+    // ტესტი 2: ლოგაუთი (Sign Out)
     @Test
     public void testLogOut(){
         loginPage.login("automattt444@gmail.com", "automation123");

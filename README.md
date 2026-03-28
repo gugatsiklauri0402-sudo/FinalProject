@@ -1,13 +1,9 @@
-# 🚀 Final Project - ტესტ ავტომატიზაციის ფრეიმვორკი
+#  Final Project - ტესტ ავტომატიზაციის ფრეიმვორკი
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
-![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
-![TestNG](https://img.shields.io/badge/TestNG-6DB33F?style=for-the-badge&logo=testng&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 ---
 
-## 📌 მიმოხილვა
+##  მიმოხილვა
 ეს პროექტი არის **ტესტ ავტომატიზაციის ფრეიმვორკი**, და შექმნილია Java-ზე.  
 
 
@@ -19,7 +15,7 @@
 
 ---
 
-## 🧰 ტექნოლოგიები
+##  ტექნოლოგიები
 - **Java** - პროგრამირების ენა
 - **Selenium WebDriver** - ბრაუზერის ავტომატიზაციისთვის
 - **TestNG** - ტესტების შესრულებისთვის
@@ -29,22 +25,23 @@
 
 ---
 
-## 📂 პროექტის სტრუქტურა
+##  პროექტის სტრუქტურა
 
 pages - Page Object კლასები (UI ელემენტები და მოქმედებები)
 tests - UI ტესტ კლასები
 api - API request/response ლოგიკა
 apiTests - API ტესტები
 utils - დამხმარე კლასები (Driver, Config და ა.შ.)
-resources - კონფიგურაციის ფაილები
 
-## ⚙️ კონფიგურაცია
+---
+##  კონფიგურაცია
 
 პროექტის კონფიგურაცია ხდება ფაილის მეშვეობით:
 
 config.properties
 
-## 📥 ინსტალაცია
+---
+##  ინსტალაცია
 
 რეპოზიტორის დაკლონვა:
 
@@ -65,7 +62,7 @@ git clone https://github.com/gugatsiklauri0402-sudo/FinalProject.git
 ```mvn clean test```
 
 ---
-## 📊 რეპორტები
+##  რეპორტები
 
 Extent Report  
 TestNG Report
@@ -74,7 +71,7 @@ test-output/
 
 ---
 
-## 🔍 შესაძლებლობები
+##  შესაძლებლობები
 
 UI ტესტირება  
 API ტესტირება  
@@ -84,12 +81,12 @@ Assertion-ები
 
 ---
 
-## 👨‍💻 ავტორი
+##  ავტორი
 
 გუგა წიკლაური  
 https://github.com/gugatsiklauri0402-sudo
 
 ---
 
-## 📜 შენიშვნა
+##  შენიშვნა
 პროექტი შექმნილია სასწავლო მიზნებისთვის.

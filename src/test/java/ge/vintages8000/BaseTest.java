@@ -1,13 +1,13 @@
-package org.example;
+package ge.vintages8000;
 
-import org.example.utils.Utils;
+import ge.vintages8000.utils.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.example.utils.ConfigReader;
-import org.example.utils.DriverManager;
+import ge.vintages8000.utils.ConfigReader;
+import ge.vintages8000.utils.DriverManager;
 
 public class BaseTest {
 
@@ -34,7 +34,7 @@ public class BaseTest {
     }
 
 
-    // ამოწმებს String-ების თანხვედრას (actual vs expected)
+    // ამოწმებს String-ების თანხვედრას
     public void assertString(String actual, String expected) {
 
 

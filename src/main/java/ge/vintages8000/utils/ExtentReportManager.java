@@ -1,4 +1,4 @@
-package org.example.utils;
+package ge.vintages8000.utils;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
