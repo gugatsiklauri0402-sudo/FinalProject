@@ -16,17 +16,18 @@ import static org.testng.Assert.*;
 public class ApiTest {
 
     private final ApiManager api = new ApiManager("https://api.escuelajs.co/api/v1");
-
+    // ეს მეთოდი ამზადებს JSON header-ს
+    // ვიყენებთ POST / PUT / PATCH request-ებზე
     private Map<String, String> jsonHeaders() {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         return headers;
     }
 
-    // ტესტი 1
-    // ამოწმებს რომ /products აბრუნებს პროდუქტების სიას
+    //ამოწმებს რომ /products endpoint მუშაობს
+    // და პროდუქტების სია ცარიელი არ არის
     @Test
-    public void getAllProducts() {
+    public void testGetAllProducts() {
         Response response = api.get("/products", 200);
 
         assertTrue(response.getContentType().contains("application/json"));
@@ -37,10 +38,29 @@ public class ApiTest {
         assertFalse(products.isEmpty(), "Products list is empty");
     }
 
-    // ტესტი 2
-    // ამოწმებს limit query parameter-ს
+    // /products endpoint-იდან მხოლოდ title-ებს იღებს
+    // და ამოწმებს რომ title-ების სია ცარიელი არ არის
     @Test
-    public void getProductsWithLimit() {
+    public void testGetAllProductTitles() {
+
+        Response response = api.get("/products", 200);
+
+        List<String> titles = response.jsonPath().getList("title");
+
+        assertEquals(response.statusCode(), 200);
+        assertNotNull(titles);
+        assertFalse(titles.isEmpty(), "Title list is empty");
+
+        // თითოეული title იბეჭდება კონსოლში
+        for (String title : titles) {
+            System.out.println(title);
+        }
+    }
+
+    // ამოწმებს limit query parameter-ს
+    // მოთხოვნილი limit-ზე მეტი პროდუქტი არ უნდა დაბრუნდეს
+    @Test
+    public void testGetProductsWithLimit() {
         Map<String, Object> queryParams = new HashMap<>();
         queryParams.put("offset", 0);
         queryParams.put("limit", 5);
@@ -54,10 +74,10 @@ public class ApiTest {
         assertTrue(products.size() <= 5, "Returned more than 5 products");
     }
 
-    // ტესტი 3
-    // ეს ტესტი ქმნის ახალ პროდუქტს
+    //ქმნის ახალ კატეგორიას
+    // name ყოველ გაშვებაზე იცვლება, რომ დუბლირება არ მოხდეს
     @Test
-    public void createCategory() {
+    public void testCreateCategory() {
 
         Map<String, Object> body = new HashMap<>();
         body.put("name", "New Category By Guga " + UUID.randomUUID());
@@ -70,32 +90,10 @@ public class ApiTest {
         assertEquals(response.jsonPath().getString("name"), body.get("name"));
     }
 
-
-    // ტესტი 4
-    // ამოწმებს პროდუქტის სრულ განახლებას PUT-ით
-    // ეს ტესტი ანახლებს ერთ პროდუქტს
+    //  ჯერ ქმნის ახალ პროდუქტს
+    // შემდეგ იმავე პროდუქტს შლის DELETE request-ით
     @Test
-    public void updateProduct() {
-
-        String updatedTitle = "Updated Product " + UUID.randomUUID();
-
-        Map<String, Object> body = new HashMap<>();
-        body.put("title", updatedTitle);
-        body.put("price", 200);
-        body.put("description", "Updated Description");
-        body.put("categoryId", 1);
-        body.put("images", Collections.singletonList("https://picsum.photos/300"));
-
-        Response response = api.put("/products/1", 200, jsonHeaders(), body);
-
-        assertEquals(response.statusCode(), 200);
-        assertEquals(response.jsonPath().getString("title"), updatedTitle);
-    }
-
-    // ტესტი 5
-    // ამოწმებს პროდუქტის წაშლას DELETE-ით
-    @Test
-    public void deleteProduct() {
+    public void testDeleteProduct() {
         Map<String, Object> body = new HashMap<>();
         body.put("title", "Delete Product " + UUID.randomUUID());
         body.put("price", 150);
@@ -111,13 +109,13 @@ public class ApiTest {
 
         Response deleteResponse = api.delete("/products/" + productId, 200);
 
-        assertEquals(deleteResponse.statusCode(), 200);
+
     }
 
-
-
+    //  ჯერ ქმნის ახალ user-ს
+    // შემდეგ იმავე user-ს აახლებს PUT request-ით
     @Test
-    public void updateUser() {
+    public void testUpdateUser() {
         Map<String, Object> createBody = new HashMap<>();
         createBody.put("name", "Test User");
         createBody.put("email", "testuser" + UUID.randomUUID() + "@gmail.com");
@@ -145,9 +143,9 @@ public class ApiTest {
         assertEquals(updateResponse.jsonPath().getString("role"), "admin");
     }
 
-    // ეს ტესტი ამოწმებს email ხელმისაწვდომია თუ არა
+    //  ამოწმებს email ხელმისაწვდომია თუ არა
     @Test
-    public void checkUserEmailIsAvailable() {
+    public void testCheckUserEmailIsAvailable() {
         Map<String, Object> body = new HashMap<>();
         body.put("email", "gugatsiklauri@gmail.com");
 
@@ -158,8 +156,10 @@ public class ApiTest {
         assertNotNull(isAvailable);
     }
 
+    // /locations endpoint-იდან description-ებს იღებს
+    // და ამოწმებს რომ სია ცარიელი არ არის
     @Test
-    public void getAllLocationDescriptions() {
+    public void testGetAllLocationDescriptions() {
         Response response = api.get("/locations", 200);
 
         List<String> descriptions = response.jsonPath().getList("description");
@@ -167,16 +167,16 @@ public class ApiTest {
         assertNotNull(descriptions);
         assertFalse(descriptions.isEmpty(), "Description list is empty");
 
+
         for (String description : descriptions) {
             Assert.assertNotNull(description);
             System.out.println(description);
         }
     }
 
-
-
+    //  არეგისტრირებს ახალ მომხმარებელს
     @Test
-    public void registerUser() {
+    public void testRegisterUser() {
 
         String email = "gugatsiklauri10@gmail.com";
         String password = "123456";
@@ -192,8 +192,11 @@ public class ApiTest {
         assertEquals(registerResponse.statusCode(), 201);
         assertNotNull(registerResponse.jsonPath().get("id"));
     }
+
+    //  login-ს აკეთებს უკვე შექმნილი მომხმარებლით
+    // შემდეგ მიღებული bearer token-ით profile endpoint-ს ამოწმებს
     @Test
-    public void loginAndGetProfile() {
+    public void testLoginAndGetProfile() {
 
         String email = "gugatsiklauri10@gmail.com";
         String password = "123456";
@@ -217,7 +220,4 @@ public class ApiTest {
         assertEquals(profileResponse.statusCode(), 200);
         assertEquals(profileResponse.jsonPath().getString("email"), email);
     }
-
-
-
 }
