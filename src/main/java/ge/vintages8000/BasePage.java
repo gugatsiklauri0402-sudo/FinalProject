@@ -1,6 +1,8 @@
 package ge.vintages8000;
 
 import ge.vintages8000.utils.Utils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -31,7 +33,7 @@ public class BasePage {
     public String getText(WebElement element) {
         waitForElementToBeVisible(element);
 
-        Utils.log("STEP","Get Text: " + element.getText());
+        Utils.log("STEP", "Get Text: " + element.getText());
         return element.getText();
     }
 
@@ -55,11 +57,11 @@ public class BasePage {
         waitForElementToBeVisible(element);
         element.sendKeys(text);
 
-       Utils.log("STEP","Entered text: " + text);
+        Utils.log("STEP", "Entered text: " + text);
     }
 
     // ელემენტზე click
-    public void click(WebElement element ) {
+    public void click(WebElement element) {
         String text = element.getText();
 
         if (text.isEmpty()) {
@@ -67,6 +69,7 @@ public class BasePage {
         }
 
         System.out.println("Clicked on element with text: " + text);
+        waitForOverlayToDisappear();
         waitForElementToBeClickable(element);
         element.click();
 
@@ -84,7 +87,15 @@ public class BasePage {
         element.clear();
     }
 
+    // ელოდება overlay ს გამოჩენას
+    public void waitForOverlayToDisappear() {
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("ajax_overlay")));
+        } catch (TimeoutException e) {
+            // თუ overlay არ არის გამოჩენილი, არაფერს ვაკეთებთ
+        }
     }
+}
 
 
 

@@ -57,14 +57,14 @@ public class ExtentReportManager {
     }
 
     // აბრუნებს მიმდინარე ტესტს (ThreadLocal-იდან)
-    public static ExtentTest getTest(){
+    public static ExtentTest getTest() {
         return test.get();
     }
 
     // flush — წერს ყველაფერს ფაილში (რეპორტის დასრულება)
-    public static void flushReports(){
+    public static void flushReports() {
 
-        if(extent != null){
+        if (extent != null) {
 
             // რეალურად აქ იქმნება HTML report
             extent.flush();

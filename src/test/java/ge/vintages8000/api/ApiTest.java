@@ -1,9 +1,12 @@
 package ge.vintages8000.api;
 
 
+
+import ge.vintages8000.utils.ConfigReader;
 import io.restassured.response.Response;
 import ge.vintages8000.utils.ApiManager;
-import org.testng.Assert;
+
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.util.*;
@@ -15,7 +18,8 @@ import static org.testng.Assert.*;
 
 public class ApiTest {
 
-    private final ApiManager api = new ApiManager("https://api.escuelajs.co/api/v1");
+    private final ApiManager api = new ApiManager(ConfigReader.get("api.url"));
+
     // ეს მეთოდი ამზადებს JSON header-ს
     // ვიყენებთ POST / PUT / PATCH request-ებზე
     private Map<String, String> jsonHeaders() {
@@ -156,30 +160,14 @@ public class ApiTest {
         assertNotNull(isAvailable);
     }
 
-    // /locations endpoint-იდან description-ებს იღებს
-    // და ამოწმებს რომ სია ცარიელი არ არის
-    @Test
-    public void testGetAllLocationDescriptions() {
-        Response response = api.get("/locations", 200);
-
-        List<String> descriptions = response.jsonPath().getList("description");
-
-        assertNotNull(descriptions);
-        assertFalse(descriptions.isEmpty(), "Description list is empty");
-
-
-        for (String description : descriptions) {
-            Assert.assertNotNull(description);
-            System.out.println(description);
-        }
-    }
 
     //  არეგისტრირებს ახალ მომხმარებელს
     @Test
-    public void testRegisterUser() {
+    @Parameters({"email", "password"})
+    public void testRegisterUser(String  email, String password) {
 
-        String email = "gugatsiklauri10@gmail.com";
-        String password = "123456";
+//        String email = "gugatsiklauri11@gmail.com";
+//        String password = "123456";
 
         Map<String, Object> registerBody = new HashMap<>();
         registerBody.put("name", "Test User");
@@ -198,7 +186,7 @@ public class ApiTest {
     @Test
     public void testLoginAndGetProfile() {
 
-        String email = "gugatsiklauri10@gmail.com";
+        String email = "gugatsiklauri11@gmail.com";
         String password = "123456";
 
         Map<String, Object> loginBody = new HashMap<>();

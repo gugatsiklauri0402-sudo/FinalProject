@@ -28,8 +28,7 @@ public class Utils {
                 ExtentReportManager.getTest().info(msg);
         }
 
-        // კონსოლშიც დაიბეჭდოს
-        //System.out.println(status + ": " + msg);
+
     }
 }
 

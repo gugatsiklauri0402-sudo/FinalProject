@@ -28,17 +28,17 @@ public class CartPage extends BasePage {
     }
 
     // აბრუნებს "Cart is empty" ელემენტს (assertion-ში გამოიყენება)
-    public WebElement checkCartIsEmpty(){
+    public WebElement checkCartIsEmpty() {
         return YourCartIsEmpty;
     }
 
     // აკლიკებს "+" ღილაკს (ზრდის პროდუქტის რაოდენობას)
-    public void clickPlusCartBtn(){
+    public void clickPlusCartBtn() {
         click(PlusCartBtn);
     }
 
     // აბრუნებს კალათაში არსებული პროდუქტის რაოდენობას (მაგ: "2") (assertion_ში გამიყენება)
-    public String checkPlusCartAmount(){
+    public String checkPlusCartAmount() {
         return getText(PlusCartAmount);
     }
 }

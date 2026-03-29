@@ -9,15 +9,15 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends BasePage {
 
     // ღილაკი "Sign In" / "Login" რომელიც ხსნის ლოგინის პოპაპს
-    @FindBy(id="ui-dialog-iniciator")
+    @FindBy(id = "ui-dialog-iniciator")
     WebElement SingleSignInBtn;
 
     // Email input ველი (სადაც იწერება მომხმარებლის იმეილი)
-    @FindBy(id="login_popup3347")
+    @FindBy(id = "login_popup3347")
     WebElement EmailField;
 
     // Password input ველი (სადაც იწერება პაროლი)
-    @FindBy(id="psw_popup3347")
+    @FindBy(id = "psw_popup3347")
     WebElement passwordField;
 
     // Login ღილაკი პოპაპში
@@ -29,13 +29,13 @@ public class LoginPage extends BasePage {
     WebElement SignInText;
 
     // კონსტრუქტორი — იღებს driver-ს BasePage-დან და ინიციალიზაციას უკეთებს ელემენტებს PageFactory-ის საშუალებით
-    public LoginPage(WebDriver driver){
+    public LoginPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     // login მეთოდი — ასრულებს ლოგინის სრულ პროცესს
-    public void login(String email, String password){
+    public void login(String email, String password) {
         SingleSignInBtn.click();
         EmailField.clear();
         sendKeys(EmailField, email);
@@ -45,12 +45,12 @@ public class LoginPage extends BasePage {
     }
 
     // აბრუნებს Sign In ტექსტს (assert-ისთვის)
-    public WebElement getSignInText(){
+    public WebElement getSignInText() {
         return SignInText;
     }
 
     // აბრუნებს Login ღილაკის WebElement-ს (assert-ისთვის)
-    public WebElement getSignInBtn(){
+    public WebElement getSignInBtn() {
         return SignBtn;
     }
 }

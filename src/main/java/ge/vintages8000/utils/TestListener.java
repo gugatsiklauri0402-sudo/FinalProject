@@ -16,7 +16,7 @@ public class TestListener implements ITestListener {
 
     // იძახება როცა ტესტი იწყება
     @Override
-    public void onTestStart(ITestResult result){
+    public void onTestStart(ITestResult result) {
 
         // ვიღებთ ტესტის მეთოდის სახელს
         String testName = result.getMethod().getMethodName();
@@ -33,7 +33,7 @@ public class TestListener implements ITestListener {
 
     // იძახება როცა ტესტი წარმატებით სრულდება
     @Override
-    public void onTestSuccess(ITestResult result){
+    public void onTestSuccess(ITestResult result) {
 
         // ვნიშნავთ ტესტს როგორც Passed Extent Report-ში
         ExtentReportManager.getTest().pass("Test Passed");
@@ -44,7 +44,7 @@ public class TestListener implements ITestListener {
 
     // იძახება როცა ტესტი ჩავარდება (FAIL)
     @Override
-    public void onTestFailure(ITestResult result){
+    public void onTestFailure(ITestResult result) {
 
         // ვნიშნავთ ტესტს როგორც Failed
         ExtentReportManager.getTest().fail("Test Failed");
@@ -56,7 +56,7 @@ public class TestListener implements ITestListener {
         WebDriver driver = DriverManager.getDriver();
 
         // ვიღებთ screenshot-ს
-        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
         try {
             // ვქმნით ფაილის path-ს
@@ -72,14 +72,14 @@ public class TestListener implements ITestListener {
             ExtentReportManager.getTest()
                     .addScreenCaptureFromPath("screenshots/" + result.getName() + ".png");
 
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     // იძახება როცა ტესტი skip ხდება
     @Override
-    public void onTestSkipped(ITestResult result){
+    public void onTestSkipped(ITestResult result) {
 
         // ვნიშნავთ როგორც skipped
         ExtentReportManager.getTest().skip("Test Skipped");
@@ -90,13 +90,13 @@ public class TestListener implements ITestListener {
 
     // იძახება როცა ტესტ სუიტი იწყება
     @Override
-    public void onStart(ITestContext result){
+    public void onStart(ITestContext result) {
         System.out.println("Test Suite Started: " + result.getName());
     }
 
     // იძახება როცა ტესტ სუიტი სრულდება
     @Override
-    public void onFinish(ITestContext result){
+    public void onFinish(ITestContext result) {
 
         // კონსოლში ბეჭდვა
         System.out.println("Test Suite Finished: " + result.getName());

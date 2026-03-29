@@ -1,0 +1,13 @@
+<suite name="Cart Suite">
+
+    <listeners>
+        <listener class-name="ge.vintages8000.utils.TestListener"/>
+    </listeners>
+
+    <test name="Cart Tests">
+        <classes>
+            <class name="ge.vintages8000.cart.CartTest"/>
+        </classes>
+    </test>
+
+</suite>

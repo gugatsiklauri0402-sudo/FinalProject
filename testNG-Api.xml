@@ -1,0 +1,15 @@
+<suite name="API Suite">
+
+    <listeners>
+        <listener class-name="ge.vintages8000.utils.TestListener"/>
+    </listeners>
+
+    <test name="API Tests">
+        <parameter name="email" value="gugatsiklauri12@gmail.com"/>
+        <parameter name="password" value="123456"/>
+        <classes>
+            <class name="ge.vintages8000.api.ApiTest"/>
+        </classes>
+    </test>
+
+</suite>
