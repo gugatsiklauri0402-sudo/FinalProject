@@ -51,7 +51,7 @@ public class ApiTest {
 
         List<String> titles = response.jsonPath().getList("title");
 
-        assertEquals(response.statusCode(), 200);
+
         assertNotNull(titles);
         assertFalse(titles.isEmpty(), "Title list is empty");
 
@@ -73,7 +73,7 @@ public class ApiTest {
 
         List<Map<String, Object>> products = response.jsonPath().getList("$");
 
-        assertEquals(response.statusCode(), 200);
+
         assertNotNull(products);
         assertTrue(products.size() <= 5, "Returned more than 5 products");
     }
@@ -89,7 +89,7 @@ public class ApiTest {
 
         Response response = api.post("/categories", 201, jsonHeaders(), body);
 
-        assertEquals(response.statusCode(), 201);
+
         assertNotNull(response.jsonPath().get("id"));
         assertEquals(response.jsonPath().getString("name"), body.get("name"));
     }
@@ -143,8 +143,8 @@ public class ApiTest {
         Response updateResponse = api.put("/users/" + userId, 200, jsonHeaders(), updateBody);
 
         assertEquals(updateResponse.jsonPath().getInt("id"), userId);
-        assertEquals(updateResponse.jsonPath().getString("name"), "Updated User");
-        assertEquals(updateResponse.jsonPath().getString("role"), "admin");
+        assertEquals(updateResponse.jsonPath().getString("name"), "Updated User","User is not Updated");
+        assertEquals(updateResponse.jsonPath().getString("role"), "admin","Role is not Updated");
     }
 
     //  ამოწმებს email ხელმისაწვდომია თუ არა
@@ -157,7 +157,7 @@ public class ApiTest {
 
         Boolean isAvailable = response.jsonPath().getBoolean("isAvailable");
 
-        assertNotNull(isAvailable);
+        assertNotNull(isAvailable, "isAvailable' should not be null");
     }
 
 
@@ -166,8 +166,6 @@ public class ApiTest {
     @Parameters({"email", "password"})
     public void testRegisterUser(String  email, String password) {
 
-//        String email = "gugatsiklauri11@gmail.com";
-//        String password = "123456";
 
         Map<String, Object> registerBody = new HashMap<>();
         registerBody.put("name", "Test User");
@@ -177,7 +175,7 @@ public class ApiTest {
 
         Response registerResponse = api.post("/users/", 201, jsonHeaders(), registerBody);
 
-        assertEquals(registerResponse.statusCode(), 201);
+
         assertNotNull(registerResponse.jsonPath().get("id"));
     }
 
@@ -195,17 +193,17 @@ public class ApiTest {
 
         Response loginResponse = api.post("/auth/login", 201, jsonHeaders(), loginBody);
 
-        assertEquals(loginResponse.statusCode(), 201);
+
 
         String accessToken = loginResponse.jsonPath().getString("access_token");
-        assertNotNull(accessToken);
+        assertNotNull(accessToken,"accessToken is null");
 
         Map<String, String> authHeaders = new HashMap<>();
         authHeaders.put("Authorization", "Bearer " + accessToken);
 
         Response profileResponse = api.get("/auth/profile", 200, authHeaders);
 
-        assertEquals(profileResponse.statusCode(), 200);
-        assertEquals(profileResponse.jsonPath().getString("email"), email);
+
+        assertEquals(profileResponse.jsonPath().getString("email"), email,"email is not set");
     }
 }
