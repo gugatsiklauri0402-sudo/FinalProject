@@ -66,7 +66,6 @@ import static io.restassured.RestAssured.given;
 
         // POST მეთოდი
         // გამოიყენება ახალი მონაცემის შესაქმნელად
-        // მაგალითად: user, product, category
         public Response post(String endpoint, int statusCode, Map<String, String> headers, Object body) {
 
             return given()

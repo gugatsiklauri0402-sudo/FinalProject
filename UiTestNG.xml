@@ -1,0 +1,35 @@
+<suite name="Final Project Suite">
+
+    <listeners>
+        <listener class-name="ge.vintages8000.utils.TestListener"/>
+    </listeners>
+
+    <test name="Cart Tests">
+        <classes>
+            <class name="ge.vintages8000.cart.CartTest"/>
+        </classes>
+    </test>
+
+
+
+
+<test name="Login Tests">
+    <parameter name="email" value="automattt444@gmail.com"/>
+    <parameter name="password" value="automation123"/>
+    <classes>
+        <class name="ge.vintages8000.login.LoginTest"/>
+    </classes>
+</test>
+
+
+
+
+<test name="Product Tests">
+    <parameter name="email" value="automattt444@gmail.com"/>
+    <parameter name="password" value="automation123"/>
+    <classes>
+        <class name="ge.vintages8000.product.ProductTest"/>
+    </classes>
+</test>
+
+</suite>

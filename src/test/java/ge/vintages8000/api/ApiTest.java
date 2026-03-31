@@ -103,12 +103,9 @@ public class ApiTest {
         body.put("price", 150);
         body.put("description", "Delete Test Description");
         body.put("categoryId", 1);
-        body.put("images", Collections.singletonList("https://picsum.photos/200"));
-
+        body.put("images", Collections.singletonList("https://placehold.co/600x400"));
         Response createResponse = api.post("/products/", 201, jsonHeaders(), body);
-
         assertNotNull(createResponse.jsonPath().get("id"));
-
         int productId = createResponse.jsonPath().getInt("id");
 
         Response deleteResponse = api.delete("/products/" + productId, 200);
@@ -181,11 +178,10 @@ public class ApiTest {
 
     //  login-ს აკეთებს უკვე შექმნილი მომხმარებლით
     // შემდეგ მიღებული bearer token-ით profile endpoint-ს ამოწმებს
-    @Test
-    public void testLoginAndGetProfile() {
+    @Test(dependsOnMethods = "testRegisterUser")
+    @Parameters({"email", "password"})
+    public void testLoginAndGetProfile(String  email, String password) {
 
-        String email = "gugatsiklauri11@gmail.com";
-        String password = "123456";
 
         Map<String, Object> loginBody = new HashMap<>();
         loginBody.put("email", email);
